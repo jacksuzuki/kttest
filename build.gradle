@@ -23,12 +23,13 @@ dependencies {
 task wrapper(type: Wrapper) { gradleVersion = '2.4' }
 
 task simpleTest(type:JavaExec) {
+     args =[dataname,count,offset]
      main = "jackprivate.kttest.SimpleTest"
      classpath = sourceSets.main.runtimeClasspath
 }
 
 task qpsTest(type:JavaExec) {
-     args =[qps, second]
+     args =[dataname,qps, second]
      main = "jackprivate.kttest.QpsTest"
      classpath = sourceSets.main.runtimeClasspath
 }
