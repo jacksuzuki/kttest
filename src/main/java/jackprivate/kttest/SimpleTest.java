@@ -11,7 +11,7 @@ import net.rubyeye.xmemcached.utils.AddrUtil;
 public class SimpleTest {
 
     public static void main(String[] args) throws IOException, InterruptedException, MemcachedException, TimeoutException {
-        XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:11211"));
+        XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:2010"));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         
         long startTime = System.currentTimeMillis();
@@ -27,6 +27,8 @@ public class SimpleTest {
         }
         
         System.out.println("consume time="+ ((endTime-startTime)/1000));
+        
+        client.shutdown();
     }
 
 }
