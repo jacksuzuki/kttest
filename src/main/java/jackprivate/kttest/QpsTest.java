@@ -26,6 +26,7 @@ public class QpsTest {
             for(int j=0;j<qps;j++){
                 client.setWithNoReply("qpsdata"+i+"/"+j, 0, message+i+"/"+j);
             }
+            Thread.sleep(1000);
         }
         
         long endTime = System.currentTimeMillis();
