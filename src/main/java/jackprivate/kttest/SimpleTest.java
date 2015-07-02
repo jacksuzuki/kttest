@@ -25,14 +25,14 @@ public class SimpleTest {
             String message = sb.toString();
             long startTime = System.currentTimeMillis();
             for(long i=offset;i<count+offset;i++){
-                client.setWithNoReply(dataname+i, 0, message+i);
+                client.set(dataname+i, 0, message+i);
                 if(i%100000==0){
                     System.out.println("done="+ i);
                 }
-                while(client.getConnector().getNoReplyOpsFlowControl().permits()<10000){
-                    System.out.println("done="+ i +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
-                    Thread.sleep(1000);
-                }
+//                while(client.getConnector().getNoReplyOpsFlowControl().permits()<10000){
+//                    System.out.println("done="+ i +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
+//                    Thread.sleep(1000);
+//                }
             }
             
             long endTime = System.currentTimeMillis();
