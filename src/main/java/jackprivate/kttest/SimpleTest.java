@@ -12,8 +12,8 @@ public class SimpleTest {
 
     public static void main(String[] args) throws IOException  {
         String dataname = args[0];
-        int count = Integer.valueOf(args[1]);
-        int offset = Integer.valueOf(args[2]);
+        long count = Long.valueOf(args[1]);
+        long offset = Long.valueOf(args[2]);
         XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:2010"));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         
@@ -24,7 +24,7 @@ public class SimpleTest {
             }
             String message = sb.toString();
             long startTime = System.currentTimeMillis();
-            for(long i=0;i<100*1000*1000;i++){
+            for(long i=offset;i<count;i++){
                 client.setWithNoReply(dataname+i, 0, message+i);
                 while(client.getConnector().getNoReplyOpsFlowControl().permits()<10000){
                     System.out.println("done="+ i +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
