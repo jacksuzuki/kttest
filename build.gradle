@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+
+jar {
+    baseName = 'myproject'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+repositories {
+    jcenter()
+    maven { url "http://files.couchbase.com/maven2" }
+}
+
+dependencies {
+    compile('com.googlecode.xmemcached:xmemcached:2.0.0')
+}
+
+task wrapper(type: Wrapper) { gradleVersion = '2.4' }
+
+task simpleTest(type:JavaExec) {
+     main = "jackprivate.kttest.SimpleTest"
+     classpath = sourceSets.main.runtimeClasspath
+}
