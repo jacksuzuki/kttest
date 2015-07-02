@@ -13,20 +13,19 @@ public class SimpleTest {
     public static void main(String[] args) throws IOException, InterruptedException, MemcachedException, TimeoutException {
         XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:2010"));
         XMemcachedClient client=(XMemcachedClient) builder.build();
-        
         long startTime = System.currentTimeMillis();
-        for(int i=0;i<10000;i++){
+        for(int i=0;i<1000000;i++){
             client.setWithNoReply("test"+i, 60, "test"+i);
+            while(client.getConnector().getNoReplyOpsFlowControl().permits()<10000){
+                System.out.println("available connection = "+client.getConnector().getNoReplyOpsFlowControl().permits());
+                Thread.sleep(1000);
+            }
         }
         
         long endTime = System.currentTimeMillis();
+ 
         
-        
-        for(int i=0;i<10000;i++){
-            System.out.println((String)client.get("test"+i));
-        }
-        
-        System.out.println("consume time="+ ((endTime-startTime)/1000));
+        System.out.println("It tooks "+ ((endTime-startTime)/1000)+"ms.");
         
         client.shutdown();
     }
