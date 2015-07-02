@@ -24,7 +24,7 @@ public class SimpleTest {
             }
             String message = sb.toString();
             long startTime = System.currentTimeMillis();
-            for(long i=offset;i<count;i++){
+            for(long i=offset;i<count+offset;i++){
                 client.set(dataname+i, 0, message+i);
                 if(i%1000000==0){
                     System.out.println("done="+ i);
