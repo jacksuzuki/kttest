@@ -8,9 +8,11 @@ import net.rubyeye.xmemcached.XMemcachedClientBuilder;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import net.rubyeye.xmemcached.utils.AddrUtil;
 
-public class SimpleTest {
+public class QpsTest {
 
     public static void main(String[] args) throws IOException, InterruptedException, MemcachedException, TimeoutException {
+        int qps = Integer.valueOf(args[0]);
+        int second = Integer.valueOf(args[1]);
         XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:2010"));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         
@@ -20,11 +22,9 @@ public class SimpleTest {
         }
         String message = sb.toString();
         long startTime = System.currentTimeMillis();
-        for(long i=0;i<100*1000*1000;i++){
-            client.setWithNoReply("basedata"+i, 0, message+i);
-            while(client.getConnector().getNoReplyOpsFlowControl().permits()<10000){
-                System.out.println("done="+ i +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
-                Thread.sleep(1000);
+        for(long i=0;i<second;i++){
+            for(int j=0;j<qps;j++){
+                client.setWithNoReply("qpsdata"+i+"/"+j, 0, message+i+"/"+j);
             }
         }
         
