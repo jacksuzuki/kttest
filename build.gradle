@@ -26,3 +26,9 @@ task simpleTest(type:JavaExec) {
      main = "jackprivate.kttest.SimpleTest"
      classpath = sourceSets.main.runtimeClasspath
 }
+
+task qpsTest(type:JavaExec) {
+     args =[qps, second]
+     main = "jackprivate.kttest.QpsTest"
+     classpath = sourceSets.main.runtimeClasspath
+}
