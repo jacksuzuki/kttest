@@ -40,6 +40,8 @@ public class QpsTest {
             
         } catch (Exception e) {
             e.printStackTrace();
+            
+        } finally{
             client.shutdown();
         }
     }
