@@ -11,10 +11,11 @@ import net.rubyeye.xmemcached.utils.AddrUtil;
 public class SimpleTest {
 
     public static void main(String[] args) throws IOException  {
-        String dataname = args[0];
-        long count = Long.valueOf(args[1]);
-        long offset = Long.valueOf(args[2]);
-        XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:2010"));
+        String target = args[0];
+        String dataname = args[1];
+        long count = Long.valueOf(args[2]);
+        long offset = Long.valueOf(args[3]);
+        XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses(target));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         
         try{
@@ -29,10 +30,6 @@ public class SimpleTest {
                 if(i%100000==0){
                     System.out.println("done="+ i);
                 }
-//                while(client.getConnector().getNoReplyOpsFlowControl().permits()<10000){
-//                    System.out.println("done="+ i +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
-//                    Thread.sleep(1000);
-//                }
             }
             
             long endTime = System.currentTimeMillis();

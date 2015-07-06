@@ -23,8 +23,8 @@ dependencies {
 task wrapper(type: Wrapper) { gradleVersion = '2.4' }
 
 task simpleTest(type:JavaExec) {
-    if(project.hasProperty("dataname") && project.hasProperty("count") && project.hasProperty("offset") ){
-        args =[dataname,count,offset]
+    if(project.hasProperty("target") && project.hasProperty("dataname") && project.hasProperty("count") && project.hasProperty("offset") ){
+        args =[target,dataname,count,offset]
         main = "jackprivate.kttest.SimpleTest"
         classpath = sourceSets.main.runtimeClasspath
      }
