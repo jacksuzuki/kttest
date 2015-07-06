@@ -28,7 +28,7 @@ public class QpsTest {
                 for(int j=0;j<qps;j++){
                     client.setWithNoReply(dataname+"_"+i+"_"+j, 0, message+"_"+i+"_"+j);
                 }
-                System.out.println("done="+ i +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
+                System.out.println("done="+ i*qps +". available connection= "+ client.getConnector().getNoReplyOpsFlowControl().permits());
                 Thread.sleep(1000);
             }
             
