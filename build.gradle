@@ -40,7 +40,7 @@ task qpsTest(type:JavaExec) {
 
 task speedTest(type:JavaExec) {
     if(project.hasProperty("target") && project.hasProperty("dataname") && project.hasProperty("count")){
-       args =[target,dataname,qps, second]
+       args =[target,dataname,count]
        main = "jackprivate.kttest.SpeedTest"
        classpath = sourceSets.main.runtimeClasspath
     }
