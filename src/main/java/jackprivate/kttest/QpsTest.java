@@ -1,6 +1,7 @@
 package jackprivate.kttest;
 
 import java.io.IOException;
+import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
 import net.rubyeye.xmemcached.XMemcachedClient;

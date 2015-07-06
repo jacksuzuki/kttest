@@ -22,26 +22,50 @@ dependencies {
 
 task wrapper(type: Wrapper) { gradleVersion = '2.4' }
 
+String target;
+if(!project.hasProperty("target")){
+    target = "localhost:2010";
+}
+
+String dataname;
+if(!project.hasProperty("dataname")){
+    dataname = UUID.randomUUID();
+}
+
+String offset;
+if(!project.hasProperty("offset")){
+    offset = "0";
+}
+
+String count;
+if(!project.hasProperty("count")){
+    count = "10000";
+}
+
+String qps;
+if(!project.hasProperty("qps")){
+    qps= "100";
+}
+
+String second;
+if(!project.hasProperty("second")){
+    second = "60";
+}
+
 task simpleTest(type:JavaExec) {
-    if(project.hasProperty("target") && project.hasProperty("dataname") && project.hasProperty("count") && project.hasProperty("offset") ){
-        args =[target,dataname,count,offset]
+     args =[target,dataname,count,offset]
         main = "jackprivate.kttest.SimpleTest"
         classpath = sourceSets.main.runtimeClasspath
-     }
 }
 
 task qpsTest(type:JavaExec) {
-    if(project.hasProperty("target") && project.hasProperty("dataname") && project.hasProperty("qps") && project.hasProperty("second") ){
-       args =[target,dataname,qps, second]
+    args =[target,dataname,qps, second]
        main = "jackprivate.kttest.QpsTest"
        classpath = sourceSets.main.runtimeClasspath
-    }
 }
 
 task speedTest(type:JavaExec) {
-    if(project.hasProperty("target") && project.hasProperty("dataname") && project.hasProperty("count")){
-       args =[target,dataname,count]
+    args =[target,dataname,count]
        main = "jackprivate.kttest.SpeedTest"
        classpath = sourceSets.main.runtimeClasspath
-    }
 }
