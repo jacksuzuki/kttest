@@ -16,6 +16,8 @@ public class QpsTest {
         String dataname = args[1];
         int qps = Integer.valueOf(args[2]);
         int second = Integer.valueOf(args[3]);
+        
+        System.out.println("target="+target+"dataname="+dataname+"qps="+qps+"qps="+qps);
         XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses(target));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         

@@ -15,6 +15,8 @@ public class SimpleTest {
         String dataname = args[1];
         long count = Long.valueOf(args[2]);
         long offset = Long.valueOf(args[3]);
+        
+        System.out.println("target="+target+"dataname="+dataname+"count="+count+"offset="+offset);
         XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses(target));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         

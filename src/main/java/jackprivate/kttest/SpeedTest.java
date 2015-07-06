@@ -14,6 +14,9 @@ public class SpeedTest {
         String target = args[0];
         String dataname = args[1];
         int count = Integer.valueOf(args[2]);
+        
+        System.out.println("target="+target+"dataname="+dataname+"count="+count);
+        
         XMemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses(target));
         XMemcachedClient client=(XMemcachedClient) builder.build();
         
