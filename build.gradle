@@ -23,32 +23,44 @@ dependencies {
 task wrapper(type: Wrapper) { gradleVersion = '2.4' }
 
 String target;
-if(!project.hasProperty("target")){
+if(project.hasProperty("target")){
+    target = project.getProperty("target");
+}else{
     target = "localhost:2010";
 }
 
 String dataname;
-if(!project.hasProperty("dataname")){
+if(project.hasProperty("dataname")){
+    dataname = project.getProperty("dataname");
+}else{
     dataname = UUID.randomUUID();
 }
 
 String offset;
-if(!project.hasProperty("offset")){
+if(project.hasProperty("offset")){
+    offset = project.getProperty("offset");
+}else{
     offset = "0";
 }
 
 String count;
-if(!project.hasProperty("count")){
+if(project.hasProperty("count")){
+    count = project.getProperty("count");
+}else{
     count = "10000";
 }
 
 String qps;
-if(!project.hasProperty("qps")){
+if(project.hasProperty("qps")){
+    qps= project.getProperty("qps");
+}else{
     qps= "100";
 }
 
 String second;
-if(!project.hasProperty("second")){
+if(project.hasProperty("second")){
+    second = project.getProperty("second");
+}else{
     second = "60";
 }
 
