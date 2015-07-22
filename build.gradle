@@ -88,3 +88,8 @@ task speedTest(type:JavaExec) {
        main = "jackprivate.kttest.SpeedTest"
        classpath = sourceSets.main.runtimeClasspath
 }
+
+task casSimple(type:JavaExec) {
+        main = "jackprivate.kttest.SimpleClient"
+        classpath = sourceSets.main.runtimeClasspath
+}
