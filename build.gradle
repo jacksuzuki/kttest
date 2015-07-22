@@ -18,6 +18,13 @@ repositories {
 
 dependencies {
     compile('com.googlecode.xmemcached:xmemcached:2.0.0')
+    compile('com.datastax.cassandra:cassandra-driver-core:2.1.6')
+    compile('com.rabbitmq:amqp-client:3.5.3')
+    compile('net.sf.ehcache:ehcache:2.10.0')
+    compile('org.iq80.leveldb:leveldb:0.7')
+    compile('org.infinispan:infinispan-core:7.2.3.Final')
+    compile('com.amazonaws:aws-java-sdk:1.10.5.1')
+    
 }
 
 task wrapper(type: Wrapper) { gradleVersion = '2.4' }
